@@ -1,0 +1,11 @@
+{
+  "id": "env-var-lookup",
+  "category": "ops",
+  "query": "Which env vars control execution data pruning and the encryption key?",
+  "ref": "references/env-vars.md",
+  "expected_behavior": [
+    "Cites EXECUTIONS_DATA_PRUNE (+ max age/count vars) for pruning",
+    "Cites N8N_ENCRYPTION_KEY for credential encryption, and warns it must be stable/managed",
+    "Pulls values from the env-vars reference rather than guessing"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "webhook-body",
+  "category": "data-contract",
+  "query": "My webhook receives JSON but {{ $json.email }} is empty in the next node. Why?",
+  "ref": "references/workflow-schema.md",
+  "expected_behavior": [
+    "Identifies that webhook payload is nested under $json.body",
+    "Provides the corrected expression {{ $json.body.email }}",
+    "Mentions headers/query/params also live under $json.body / $json.headers etc."
+  ]
+}

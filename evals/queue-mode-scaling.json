@@ -1,0 +1,12 @@
+{
+  "id": "queue-mode-scaling",
+  "category": "ops",
+  "query": "n8n is maxing out on a single instance. How do I scale it to handle more concurrent executions?",
+  "ref": "references/scaling.md",
+  "expected_behavior": [
+    "Recommends queue mode (EXECUTIONS_MODE=queue) with main + worker processes + Redis",
+    "Mentions N8N_CONCURRENCY / worker concurrency tuning",
+    "Notes all processes must share the same N8N_ENCRYPTION_KEY",
+    "Mentions dedicated webhook processors / multi-main HA where relevant"
+  ]
+}

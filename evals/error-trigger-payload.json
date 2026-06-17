@@ -1,0 +1,11 @@
+{
+  "id": "error-trigger-payload",
+  "category": "errors",
+  "query": "In my Error Workflow, what fields can I read off the Error Trigger to build a useful alert?",
+  "ref": "references/error-handling.md",
+  "expected_behavior": [
+    "Names the error payload fields: execution (id, url, error message/stack, lastNodeExecuted), workflow (id, name)",
+    "Shows reading them via expressions for a Slack/email alert",
+    "Notes the Error Trigger only fires for workflows that have this error workflow assigned in settings"
+  ]
+}

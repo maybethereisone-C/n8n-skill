@@ -1,0 +1,12 @@
+{
+  "id": "webhook-auth",
+  "category": "security",
+  "query": "Set up a public webhook that receives orders and stores them.",
+  "ref": "references/security.md",
+  "expected_behavior": [
+    "Requires authentication on the public webhook (basicAuth / headerAuth / jwtAuth), never none",
+    "Validates the webhook payload before use",
+    "No secrets inline in parameters — credentials by reference",
+    "Mentions SSRF guard if any user-supplied URL is fetched downstream"
+  ]
+}

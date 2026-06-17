@@ -1,0 +1,12 @@
+{
+  "id": "code-tool-contract",
+  "category": "ai",
+  "query": "My AI Agent's Code Tool errors with 'No execution data available' when I use $fromAI(). And it says wrong output type. Fix it.",
+  "ref": "references/ai-agent.md",
+  "expected_behavior": [
+    "Identifies $fromAI() is NOT supported inside the toolCode sandbox",
+    "Says the Code Tool must return a STRING (JSON.stringify for structured data), not an array",
+    "Notes input arrives as query/_query and cannot be renamed",
+    "If $fromAI typed params or object returns are needed, routes to toolWorkflow instead of toolCode"
+  ]
+}

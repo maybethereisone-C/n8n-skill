@@ -1,0 +1,12 @@
+{
+  "id": "node-selection",
+  "category": "node-selection",
+  "query": "Build a workflow that sends a WhatsApp message when a webhook fires.",
+  "ref": "references/node-selection.md",
+  "expected_behavior": [
+    "Uses the dedicated WhatsApp node (n8n-nodes-base.whatsApp), NOT n8n-nodes-base.httpRequest",
+    "Only falls back to HTTP Request if no dedicated node exists, and says so explicitly",
+    "Webhook trigger reads the body as $json.body, not $json",
+    "Assigns credentials by reference, no inline token"
+  ]
+}

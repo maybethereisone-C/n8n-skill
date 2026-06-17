@@ -1,0 +1,12 @@
+# DeepSeek Chat Model  (`@n8n/n8n-nodes-langchain.lmChatDeepSeek`)
+
+- typeVersion (max): **1**  | group: transform  | trigger: no
+- credentials: deepSeekApi
+
+## Parameters
+
+| name | displayName | type | default | req | gated by |
+|---|---|---|---|---|---|
+| `notice` | If using JSON response format, you must include word "json" in the prompt in your chain or agent. Also, make sure to select latest models released post November 2023. | notice |  |  |  |
+| `model` | Model | options | deepseek-chat |  |  |
+| `options` | Options | collection | text |  |  |

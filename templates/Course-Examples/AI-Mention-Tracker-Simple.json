@@ -1,0 +1,161 @@
+{
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "043960c2-abb1-4f06-be31-64000a5f72e6",
+      "name": "When clicking Test",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [432, -128]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "q1",
+              "name": "question",
+              "value": "อยากทำ AI Search / GEO ให้แบรนด์ถูก AI อย่าง ChatGPT กับ Gemini พูดถึง และทำการตลาดออนไลน์ในไทยที่ดีที่สุดมีเจ้าไหนบ้าง แนะนำมา 5 เจ้าพร้อมเหตุผลสั้นๆ",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "55555555-5555-5555-5555-555555555555",
+      "name": "Question",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [608, -128]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key",
+              "value": "PASTE_YOUR_GEMINI_API_KEY_HERE"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contents\": [\n    { \"parts\": [ { \"text\": {{ JSON.stringify($json.question) }} } ] }\n  ]\n}",
+        "options": {}
+      },
+      "id": "f209e06d-2808-40bc-8011-98b5ebb3d8ea",
+      "name": "Ask Gemini",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [784, -128]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "date",
+              "value": "={{ $now.toFormat('yyyy-MM-dd HH:mm') }}",
+              "type": "string"
+            },
+            {
+              "id": "a2",
+              "name": "question",
+              "value": "={{ $('Question').item.json.question }}",
+              "type": "string"
+            },
+            {
+              "id": "a3",
+              "name": "answer",
+              "value": "={{ $json.candidates[0].content.parts[0].text }}",
+              "type": "string"
+            },
+            {
+              "id": "a4",
+              "name": "mentioned",
+              "value": "={{ $json.candidates[0].content.parts[0].text.toLowerCase().includes('metier') }}",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "90f3fbed-dec2-42a3-96dc-7ca00421d25e",
+      "name": "Extract Answer",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [960, -128]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Vy0AjwYy1o-nGo3DCLG-W1Rv89MD7yEr1yN6cGkyAig",
+          "mode": "list",
+          "cachedResultName": "test",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Vy0AjwYy1o-nGo3DCLG-W1Rv89MD7yEr1yN6cGkyAig/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "ชีต1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Vy0AjwYy1o-nGo3DCLG-W1Rv89MD7yEr1yN6cGkyAig/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "id": "8cc671dc-97f2-43de-bd24-f032d3377def",
+      "name": "Save to Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [1136, -128],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "d3D86R1NVq2veGgG",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "When clicking Test": {
+      "main": [ [ { "node": "Question", "type": "main", "index": 0 } ] ]
+    },
+    "Question": {
+      "main": [ [ { "node": "Ask Gemini", "type": "main", "index": 0 } ] ]
+    },
+    "Ask Gemini": {
+      "main": [ [ { "node": "Extract Answer", "type": "main", "index": 0 } ] ]
+    },
+    "Extract Answer": {
+      "main": [ [ { "node": "Save to Sheet", "type": "main", "index": 0 } ] ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "29e61578fc56960bda1da5c189c20b6d93e9d292027a86eee0a09b1308139e11"
+  }
+}

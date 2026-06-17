@@ -1,0 +1,12 @@
+{
+  "id": "mcp-connect",
+  "category": "data-contract",
+  "query": "How do I connect Claude Code to my running n8n so it can create workflows on it?",
+  "ref": "references/mcp-and-api.md",
+  "expected_behavior": [
+    "Gives the `claude mcp add n8n-mcp ... -- npx n8n-mcp` command",
+    "Sets N8N_API_URL + N8N_API_KEY to unlock the n8n_* management tools",
+    "Explains key comes from Settings -> n8n API",
+    "Notes the nodeType two-prefix gotcha (nodes-base.X for tools vs n8n-nodes-base.X in workflow JSON)"
+  ]
+}

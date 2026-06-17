@@ -1,0 +1,12 @@
+{
+  "id": "webhook-respond-mode",
+  "category": "api",
+  "query": "My webhook should return a custom JSON body after the workflow finishes, not the default 200. How?",
+  "ref": "references/webhooks.md",
+  "expected_behavior": [
+    "Sets the Webhook node responseMode to 'responseNode' (Using Respond to Webhook node)",
+    "Adds a Respond to Webhook node at the end returning the custom JSON",
+    "Notes the alternative 'lastNode' mode and when 'onReceived' is wrong here",
+    "Reminds that webhook body is read via $json.body"
+  ]
+}

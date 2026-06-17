@@ -1,0 +1,12 @@
+{
+  "id": "splitinbatches-loss",
+  "category": "code",
+  "query": "After my Loop Over Items finishes, a Code node calling $('Process').all() only returns the last batch. How do I collect every iteration?",
+  "ref": "references/code-node.md",
+  "expected_behavior": [
+    "Identifies that $('NodeInLoop').all() returns only the final iteration after Split In Batches",
+    "Recommends accumulating into $getWorkflowStaticData('global')",
+    "Says to reset the accumulator before the loop starts",
+    "Notes Python Code nodes may lack $getWorkflowStaticData; use a JS Code node"
+  ]
+}

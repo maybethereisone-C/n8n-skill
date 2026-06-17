@@ -1,0 +1,12 @@
+{
+  "id": "expression-luxon",
+  "category": "data-contract",
+  "query": "In an expression, how do I output yesterday's date as YYYY-MM-DD?",
+  "ref": "references/expressions.md",
+  "expected_behavior": [
+    "Uses $now (Luxon) with minus({ days: 1 })",
+    "Formats with toFormat('yyyy-MM-dd') or .toISODate()",
+    "Wraps it in {{ }} as an expression",
+    "Does not invoke JS Date() when the Luxon helper suffices"
+  ]
+}

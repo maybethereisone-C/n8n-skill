@@ -1,0 +1,13 @@
+{
+  "id": "error-workflow",
+  "category": "errors",
+  "query": "I built a workflow that calls a flaky API and writes to Postgres. Is it production-ready?",
+  "ref": "references/production-checklist.md",
+  "expected_behavior": [
+    "Requires an Error Workflow (n8n-nodes-base.errorTrigger) assigned in Workflow Settings",
+    "Requires retryOnFail + maxTries + waitBetweenTries on the network-I/O node",
+    "Requires idempotent writes (upsert / dedupe key) for the Postgres write",
+    "Runs the production-checklist as a real gate, not a suggestion",
+    "Does NOT declare it production-ready without these"
+  ]
+}
