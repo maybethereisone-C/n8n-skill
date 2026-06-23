@@ -1,0 +1,12 @@
+{
+  "id": "webhook-id-registration",
+  "category": "api",
+  "query": "I deployed a workflow with a Webhook node via the REST API, it shows active, but calling the production URL just 404s. Why?",
+  "ref": "references/live-instance-ops.md",
+  "expected_behavior": [
+    "Identifies the missing 'webhookId' UUID on the webhook node as the cause — without it the production endpoint never registers",
+    "Says to generate and inject a webhookId UUID into the node JSON, then re-deploy",
+    "Notes that updating a workflow does not re-register triggers — must deactivate then activate to rebind",
+    "Cites references/live-instance-ops.md"
+  ]
+}

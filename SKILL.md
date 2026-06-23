@@ -84,6 +84,7 @@ Every reference is doc-grounded against the official n8n docs (v2.26). Read the 
 |---|---|
 | `references/mcp-and-api.md` | Connect Claude to a live n8n; the 3 paths (n8n-mcp / native MCP / REST) |
 | `references/rest-api.md` | Full public REST endpoint reference + scopes + n8n CLI surface |
+| `references/live-instance-ops.md` | **Deploy & debug on a LIVE instance**: create→activate→trigger→inspect loop, the `webhookId`-or-404 trap, deploy-time credential-id substitution, PUT's 4-key limit, deactivate→activate re-register |
 | `references/webhooks.md` | Webhook lifecycle, response modes, Respond-to-Webhook, Wait/resume URLs |
 | `references/execution-debugging.md` | Executions: list/inspect/retry/debug, partial vs production, pin data, custom data |
 | `references/n8n-as-code.md` | User authors workflows as TypeScript (native SDK / n8n-as-code); why we stay JSON-first |
